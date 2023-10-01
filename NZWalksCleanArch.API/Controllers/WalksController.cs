@@ -24,9 +24,7 @@ namespace NZWalksCleanArch.API.Controllers
         public async Task<IActionResult> GetAll(
             [FromQuery] Filter filter)
         {
-            var query = new GetAllWalksQuery(filter);
-
-            var result = await mediator.Send(query);
+            var result = await mediator.Send(new GetAllWalksQuery(filter));
 
             return Ok(result);
         }
@@ -36,9 +34,7 @@ namespace NZWalksCleanArch.API.Controllers
         //[Authorize(Roles = "Reader")]
         public async Task<IActionResult> GetById([FromRoute] Guid id)
         {
-            var query = new GetWalkQuery(id);
-
-            var result = await mediator.Send(query);
+            var result = await mediator.Send(new GetWalkQuery(id));
 
             return Ok(result);
         }
@@ -48,9 +44,7 @@ namespace NZWalksCleanArch.API.Controllers
         //[Authorize(Roles = "Writer")]
         public async Task<IActionResult> Create([FromBody] CreateWalkRequest createWalkRequest)
         {
-            var command = new CreateWalkInfoRequest(createWalkRequest);
-
-            var result = await mediator.Send(command);
+            var result = await mediator.Send(new CreateWalkInfoRequest(createWalkRequest));
 
             return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
         }
@@ -61,9 +55,7 @@ namespace NZWalksCleanArch.API.Controllers
         //[Authorize(Roles = "Writer")]
         public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateWalkRequest updateWalkRequest)
         {
-            var command = new UpdateWalkInfoRequest(id, updateWalkRequest);
-
-            var result = await mediator.Send(command);
+            var result = await mediator.Send(new UpdateWalkInfoRequest(id, updateWalkRequest));
 
             return result ? NoContent() : BadRequest();
         }
@@ -73,9 +65,7 @@ namespace NZWalksCleanArch.API.Controllers
         //[Authorize(Roles = "Writer")]
         public async Task<IActionResult> Delete([FromRoute] Guid id)
         {
-            var command = new DeleteWalkInfoRequest(id);
-
-            var result = await mediator.Send(command);
+            var result = await mediator.Send(new DeleteWalkInfoRequest(id));
 
             return result ? NoContent() : BadRequest();
         }

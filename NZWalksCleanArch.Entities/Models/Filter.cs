@@ -1,4 +1,4 @@
-﻿namespace NZWalksCleanArch.Entities.Dtos.Shared
+﻿namespace NZWalksCleanArch.Entities.Models
 {
     public class Filter
     {

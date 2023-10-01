@@ -4,7 +4,7 @@ using NZWalksCleanArch.DataService.Data;
 using NZWalksCleanArch.DataService.Enums;
 using NZWalksCleanArch.DataService.Repositories.Interfaces;
 using NZWalksCleanArch.Entities.DbSet;
-using NZWalksCleanArch.Entities.Dtos.Shared;
+using NZWalksCleanArch.Entities.Models;
 
 namespace NZWalksCleanArch.DataService.Repositories
 {

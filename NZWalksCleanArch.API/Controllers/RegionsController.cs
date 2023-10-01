@@ -5,8 +5,8 @@ using NZWalksCleanArch.API.Commands.Regions;
 using NZWalksCleanArch.API.Queries.Regions;
 using NZWalksCleanArch.API.Middlewares.CustomActionFilters;
 using NZWalksCleanArch.DataService.Repositories.Interfaces;
-using NZWalksCleanArch.Entities.Dtos.Shared;
 using NZWalksCleanArch.Entities.Dtos.Regions.Requests;
+using NZWalksCleanArch.Entities.Models;
 
 namespace NZWalksCleanArch.API.Controllers
 {

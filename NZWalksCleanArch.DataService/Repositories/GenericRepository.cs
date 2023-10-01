@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using NZWalksCleanArch.DataService.Data;
 using NZWalksCleanArch.DataService.Repositories.Interfaces;
-using NZWalksCleanArch.Entities.Dtos.Shared;
+using NZWalksCleanArch.Entities.Models;
 
 namespace NZWalksCleanArch.DataService.Repositories
 {

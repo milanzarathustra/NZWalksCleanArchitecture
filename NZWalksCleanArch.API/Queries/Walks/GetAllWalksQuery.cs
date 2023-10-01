@@ -1,6 +1,6 @@
 ﻿using MediatR;
-using NZWalksCleanArch.Entities.Dtos.Shared;
 using NZWalksCleanArch.Entities.Dtos.Walks.Responses;
+using NZWalksCleanArch.Entities.Models;
 
 namespace NZWalksCleanArch.API.Queries.Walks
 {

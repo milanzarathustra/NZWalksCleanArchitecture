@@ -1,10 +1,9 @@
-﻿namespace NZWalksCleanArch.DataService.Repositories.Interfaces
-{
-    public interface IUnitOfWork
-    {
-        IRegionRepository Region { get; }
-        IWalkRepository Walk { get; }
+﻿namespace NZWalksCleanArch.DataService.Repositories.Interfaces;
 
-        Task<bool> CompleteAsync();
-    }
+public interface IUnitOfWork
+{
+    IRegionRepository Region { get; }
+    IWalkRepository Walk { get; }
+
+    Task<bool> CompleteAsync();
 }

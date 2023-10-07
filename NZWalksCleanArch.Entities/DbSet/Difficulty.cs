@@ -1,7 +1,6 @@
-﻿namespace NZWalksCleanArch.Entities.DbSet
+﻿namespace NZWalksCleanArch.Entities.DbSet;
+
+public sealed class Difficulty : BaseEntity
 {
-    public class Difficulty : BaseEntity
-    {
-        public string Name { get; set; } = string.Empty;
-    }
+    public string Name { get; set; } = string.Empty;
 }

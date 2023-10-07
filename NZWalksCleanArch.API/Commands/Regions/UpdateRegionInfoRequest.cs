@@ -1,18 +1,17 @@
 ﻿using MediatR;
 using NZWalksCleanArch.Entities.Dtos.Regions.Requests;
 
-namespace NZWalksCleanArch.API.Commands.Regions
+namespace NZWalksCleanArch.API.Commands.Regions;
+
+public sealed class UpdateRegionInfoRequest : IRequest<bool>
 {
-    public class UpdateRegionInfoRequest : IRequest<bool>
+    public Guid Id { get; }
+    public UpdateRegionRequest RegionRequest { get; }
+
+    public UpdateRegionInfoRequest(Guid id, UpdateRegionRequest regionRequest)
     {
-        public Guid Id { get; }
-        public UpdateRegionRequest RegionRequest { get; }
-
-        public UpdateRegionInfoRequest(Guid id, UpdateRegionRequest regionRequest)
-        {
-            Id = id;
-            RegionRequest = regionRequest;
-        }
-
+        Id = id;
+        RegionRequest = regionRequest;
     }
+
 }

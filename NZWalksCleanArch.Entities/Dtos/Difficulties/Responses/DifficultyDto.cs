@@ -1,8 +1,7 @@
-﻿namespace NZWalksCleanArch.Entities.Dtos.Difficulties.Responses
+﻿namespace NZWalksCleanArch.Entities.Dtos.Difficulties.Responses;
+
+public sealed class DifficultyDto
 {
-    public class DifficultyDto
-    {
-        public Guid Id { get; set; }
-        public string Name { get; set; } = string.Empty;
-    }
+    public Guid Id { get; set; }
+    public string Name { get; set; } = string.Empty;
 }

@@ -1,16 +1,15 @@
 ﻿using MediatR;
-using NZWalksCleanArch.Entities.Dtos.Shared;
 using NZWalksCleanArch.Entities.Dtos.Walks.Responses;
+using NZWalksCleanArch.Entities.Models;
 
-namespace NZWalksCleanArch.API.Queries.Walks
+namespace NZWalksCleanArch.API.Queries.Walks;
+
+public sealed class GetAllWalksQuery : IRequest<IEnumerable<WalkDto>>
 {
-    public class GetAllWalksQuery : IRequest<IEnumerable<WalkDto>>
-    {
-        public Filter Filter { get; }
+    public Filter Filter { get; }
 
-        public GetAllWalksQuery(Filter filter)
-        {
-            Filter = filter;
-        }
+    public GetAllWalksQuery(Filter filter)
+    {
+        Filter = filter;
     }
 }

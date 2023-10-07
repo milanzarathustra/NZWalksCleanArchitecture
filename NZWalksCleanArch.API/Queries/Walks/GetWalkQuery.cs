@@ -3,7 +3,7 @@ using NZWalksCleanArch.Entities.Dtos.Walks.Responses;
 
 namespace NZWalksCleanArch.API.Queries.Walks
 {
-    public class GetWalkQuery : IRequest<WalkDto>
+    public sealed class GetWalkQuery : IRequest<WalkDto>
     {
         public Guid Id { get; }
 

@@ -1,10 +1,9 @@
-﻿namespace NZWalksCleanArch.Entities.Dtos.Regions.Responses
+﻿namespace NZWalksCleanArch.Entities.Dtos.Regions.Responses;
+
+public sealed class RegionDto
 {
-    public class RegionDto
-    {
-        public Guid Id { get; set; }
-        public string Code { get; set; } = string.Empty;
-        public string Name { get; set; } = string.Empty;
-        public string? RegionImageUrl { get; set; }
-    }
+    public Guid Id { get; set; }
+    public string Code { get; set; } = string.Empty;
+    public string Name { get; set; } = string.Empty;
+    public string? RegionImageUrl { get; set; }
 }

@@ -1,8 +1,7 @@
 ﻿using NZWalksCleanArch.Entities.DbSet;
 
-namespace NZWalksCleanArch.DataService.Repositories.Interfaces
+namespace NZWalksCleanArch.DataService.Repositories.Interfaces;
+
+public interface IWalkRepository : IGenericRepository<Walk>
 {
-    public interface IWalkRepository : IGenericRepository<Walk>
-    {
-    }
 }

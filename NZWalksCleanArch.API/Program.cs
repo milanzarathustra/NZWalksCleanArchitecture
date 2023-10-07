@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using NZWalksCleanArch.API.Middlewares.Exceptions;
+using NZWalksCleanArch.API.Middlewares.GlobalExceptionHandling;
 using NZWalksCleanArch.DataService.Data;
 using NZWalksCleanArch.DataService.Repositories;
 using NZWalksCleanArch.DataService.Repositories.Interfaces;

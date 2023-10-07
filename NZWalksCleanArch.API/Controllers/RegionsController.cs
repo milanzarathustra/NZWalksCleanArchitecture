@@ -5,69 +5,68 @@ using NZWalksCleanArch.API.Commands.Regions;
 using NZWalksCleanArch.API.Queries.Regions;
 using NZWalksCleanArch.API.Middlewares.CustomActionFilters;
 using NZWalksCleanArch.DataService.Repositories.Interfaces;
-using NZWalksCleanArch.Entities.Dtos.Shared;
 using NZWalksCleanArch.Entities.Dtos.Regions.Requests;
+using NZWalksCleanArch.Entities.Models;
 
-namespace NZWalksCleanArch.API.Controllers
+namespace NZWalksCleanArch.API.Controllers;
+
+public sealed class RegionsController : BaseController
 {
-    public class RegionsController : BaseController
+    public RegionsController(
+        IUnitOfWork unitOfWork,
+        IMapper mapper,
+        IMediator mediator) : base(unitOfWork, mapper, mediator)
     {
-        public RegionsController(
-            IUnitOfWork unitOfWork,
-            IMapper mapper,
-            IMediator mediator) : base(unitOfWork, mapper, mediator)
-        {
-        }
+    }
 
-        [HttpGet]
-        //[Authorize(Roles = "Reader, Writer")] //Either one of these roles
-        public async Task<IActionResult> GetAll(
-            [FromQuery] Filter filter)
-        {
-            var result = await mediator.Send(new GetAllRegionsQuery(filter));
+    [HttpGet]
+    //[Authorize(Roles = "Reader, Writer")] //Either one of these roles
+    public async Task<IActionResult> GetAll(
+        [FromQuery] Filter filter)
+    {
+        var result = await mediator.Send(new GetAllRegionsQuery(filter));
 
-            return Ok(result);
-        }
+        return Ok(result);
+    }
 
-        [HttpGet]
-        [Route("{id:Guid}")]
-        //[Authorize(Roles = "Reader")]
-        public async Task<IActionResult> GetById([FromRoute] Guid id)
-        {
-            var result = await mediator.Send(new GetRegionQuery(id));
+    [HttpGet]
+    [Route("{id:Guid}")]
+    //[Authorize(Roles = "Reader")]
+    public async Task<IActionResult> GetById([FromRoute] Guid id)
+    {
+        var result = await mediator.Send(new GetRegionQuery(id));
 
-            return Ok(result);
-        }
+        return Ok(result);
+    }
 
-        [HttpPost]
-        [ValidateModel]
-        //[Authorize(Roles = "Writer")]
-        public async Task<IActionResult> Create([FromBody] CreateRegionRequest createRegionRequest) 
-        {
-            var result = await mediator.Send(new CreateRegionInfoRequest(createRegionRequest));
+    [HttpPost]
+    [ValidateModel]
+    //[Authorize(Roles = "Writer")]
+    public async Task<IActionResult> Create([FromBody] CreateRegionRequest createRegionRequest) 
+    {
+        var result = await mediator.Send(new CreateRegionInfoRequest(createRegionRequest));
 
-            return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
-        }
+        return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
+    }
 
-        [HttpPut]
-        [Route("{id:Guid}")]
-        [ValidateModel]
-        //[Authorize(Roles = "Writer")]
-        public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateRegionRequest updateRegionRequest)
-        {
-            var result = await mediator.Send(new UpdateRegionInfoRequest(id, updateRegionRequest));
+    [HttpPut]
+    [Route("{id:Guid}")]
+    [ValidateModel]
+    //[Authorize(Roles = "Writer")]
+    public async Task<IActionResult> Update([FromRoute] Guid id, [FromBody] UpdateRegionRequest updateRegionRequest)
+    {
+        var result = await mediator.Send(new UpdateRegionInfoRequest(id, updateRegionRequest));
 
-            return result ? NoContent() : BadRequest();
-        }
+        return result ? NoContent() : BadRequest();
+    }
 
-        [HttpDelete]
-        [Route("{id:Guid}")]
-        //[Authorize(Roles = "Writer")]
-        public async Task<IActionResult> Delete([FromRoute] Guid id)
-        {
-            var result = await mediator.Send(new DeleteRegionInfoRequest(id));
+    [HttpDelete]
+    [Route("{id:Guid}")]
+    //[Authorize(Roles = "Writer")]
+    public async Task<IActionResult> Delete([FromRoute] Guid id)
+    {
+        var result = await mediator.Send(new DeleteRegionInfoRequest(id));
 
-            return result ? NoContent() : BadRequest();
-        }
+        return result ? NoContent() : BadRequest();
     }
 }

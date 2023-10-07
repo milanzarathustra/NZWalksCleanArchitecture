@@ -27,7 +27,7 @@ public class AppDbContext : DbContext
             {
                 Id = Guid.Parse("82ff4bef-e4d8-4784-a45d-e09038b6b95d"),
                 Name = "Easy",
-                Status = (int)StatusEnum.Live,
+                Status = (int)Status.Live,
                 AddedDate = DateTime.UtcNow,
                 UpdatedDate = DateTime.UtcNow,
             },
@@ -35,7 +35,7 @@ public class AppDbContext : DbContext
             {
                 Id = Guid.Parse("0be7662a-6cf8-45ca-aa0e-9088d9b41ece"),
                 Name = "Medium",
-                Status = (int)StatusEnum.Live,
+                Status = (int)Status.Live,
                 AddedDate = DateTime.UtcNow,
                 UpdatedDate = DateTime.UtcNow,
             },
@@ -43,7 +43,7 @@ public class AppDbContext : DbContext
             {
                 Id = Guid.Parse("cc765ba3-3470-471f-915d-100fe14fdef0"),
                 Name = "Hard",
-                Status = (int)StatusEnum.Live,
+                Status = (int)Status.Live,
                 AddedDate = DateTime.UtcNow,
                 UpdatedDate = DateTime.UtcNow,
             }
@@ -61,7 +61,7 @@ public class AppDbContext : DbContext
                 Name = "AuckLand",
                 Code = "AKL",
                 RegionImageUrl = "https://test.com/image1.png",
-                Status = (int)StatusEnum.Live,
+                Status = (int)Status.Live,
                 AddedDate = DateTime.UtcNow,
                 UpdatedDate = DateTime.UtcNow
             },
@@ -71,7 +71,7 @@ public class AppDbContext : DbContext
                 Name = "NorthLand",
                 Code = "NTL",
                 RegionImageUrl = "https://test.com/image2.png",
-                Status = (int)StatusEnum.Live,
+                Status = (int)Status.Live,
                 AddedDate = DateTime.UtcNow,
                 UpdatedDate = DateTime.UtcNow
             },
@@ -81,7 +81,7 @@ public class AppDbContext : DbContext
                 Name = "Bay of Plenty",
                 Code = "BOP",
                 RegionImageUrl = "https://test.com/image3.png",
-                Status = (int)StatusEnum.Live,
+                Status = (int)Status.Live,
                 AddedDate = DateTime.UtcNow,
                 UpdatedDate = DateTime.UtcNow
             },
@@ -91,7 +91,7 @@ public class AppDbContext : DbContext
                 Name = "Wellington",
                 Code = "WGN",
                 RegionImageUrl = "https://test.com/image4.png",
-                Status = (int)StatusEnum.Live,
+                Status = (int)Status.Live,
                 AddedDate = DateTime.UtcNow,
                 UpdatedDate = DateTime.UtcNow
             },
@@ -101,7 +101,7 @@ public class AppDbContext : DbContext
                 Name = "Nelson",
                 Code = "NSN",
                 RegionImageUrl = "https://test.com/image5.png",
-                Status = (int)StatusEnum.Live,
+                Status = (int)Status.Live,
                 AddedDate = DateTime.UtcNow,
                 UpdatedDate = DateTime.UtcNow
             },

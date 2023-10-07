@@ -16,15 +16,14 @@ public sealed class WalkRepository : GenericRepository<Walk>, IWalkRepository
 
     public override async Task<IEnumerable<Walk>?> GetAllAsync(Filter filter)
     {
-        var walks = context.Walks.Include(x => x.Difficulty).Include(x => x.Region).Where(o => o.Status != (int)StatusEnum.Deleted).AsQueryable();
+        var walks = context.Walks.Include(x => x.Difficulty).Include(x => x.Region).Where(o => o.Status != (int)Status.Deleted).AsQueryable();
 
         //Filtering
-        if (!string.IsNullOrWhiteSpace(filter.FilterOn) && !string.IsNullOrWhiteSpace(filter.FilterQuery))
+        if (!string.IsNullOrWhiteSpace(filter.FilterOn) && 
+            !string.IsNullOrWhiteSpace(filter.FilterQuery) &&
+            filter.FilterOn.Equals("Name", StringComparison.OrdinalIgnoreCase))
         {
-            if (filter.FilterOn.Equals("Name", StringComparison.OrdinalIgnoreCase))
-            {
-                walks = walks.Where(x => x.Name.Contains(filter.FilterQuery));
-            }
+            walks = walks.Where(x => x.Name.Contains(filter.FilterQuery));
         }
 
         //Sorting
@@ -51,19 +50,19 @@ public sealed class WalkRepository : GenericRepository<Walk>, IWalkRepository
         return await context.Walks.Include(x => x.Difficulty).Include(x => x.Region).FirstOrDefaultAsync(x => x.Id == id);
     }
 
-    public override async Task<bool> UpdateAsync(Guid id, Walk walk)
+    public override async Task<bool> UpdateAsync(Guid id, Walk entity)
     {
         var existingWalk = await GetByIdAsync(id);
 
         if (existingWalk == null)
             return false;
 
-        existingWalk.Name = walk.Name;
-        existingWalk.Description = walk.Description;
-        existingWalk.LengthInKm = walk.LengthInKm;
-        existingWalk.WalkImageUrl = walk.WalkImageUrl;
-        existingWalk.DifficultyId = walk.DifficultyId;
-        existingWalk.RegionId = walk.RegionId;
+        existingWalk.Name = entity.Name;
+        existingWalk.Description = entity.Description;
+        existingWalk.LengthInKm = entity.LengthInKm;
+        existingWalk.WalkImageUrl = entity.WalkImageUrl;
+        existingWalk.DifficultyId = entity.DifficultyId;
+        existingWalk.RegionId = entity.RegionId;
 
         existingWalk.UpdatedDate = DateTime.UtcNow;
 
@@ -79,7 +78,7 @@ public sealed class WalkRepository : GenericRepository<Walk>, IWalkRepository
 
         if (shadowDelete)
         {
-            existingWalk.Status = (int)StatusEnum.Deleted;
+            existingWalk.Status = (int)Status.Deleted;
             existingWalk.UpdatedDate = DateTime.UtcNow;
         }
         else

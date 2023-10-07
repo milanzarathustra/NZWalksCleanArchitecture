@@ -8,14 +8,11 @@ namespace NZWalksCleanArch.API.Middlewares.GlobalExceptionHandling;
 
 public sealed class ExceptionHandlerMiddleware
 {
-    private readonly ILogger<ExceptionHandlerMiddleware> logger;
     private readonly RequestDelegate next;
 
     public ExceptionHandlerMiddleware(
-        ILogger<ExceptionHandlerMiddleware> logger,
         RequestDelegate next)
     {
-        this.logger = logger;
         this.next = next;
     }
 
@@ -45,7 +42,7 @@ public sealed class ExceptionHandlerMiddleware
             SupportMessage = $"Provide the Error Id: {errorId} to the support team for further analysis."
         };
 
-        errorResult.Messages.Add(exception.Message);
+        errorResult.Messages!.Add(exception.Message);
 
         if (exception is not CustomException && exception.InnerException != null)
         {

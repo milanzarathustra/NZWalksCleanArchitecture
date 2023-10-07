@@ -16,7 +16,7 @@ public sealed class AutoMapperProfiles : Profile
         //Regions
         CreateMap<Region, RegionDto>().ReverseMap();
         CreateMap<CreateRegionRequest, Region>()
-            .ForMember(dest => dest.Status, opt => opt.MapFrom(src => StatusEnum.Live))
+            .ForMember(dest => dest.Status, opt => opt.MapFrom(src => Status.Live))
             .ForMember(dest => dest.AddedDate, opt => opt.MapFrom(src => DateTime.UtcNow))
             .ForMember(dest => dest.UpdatedDate, opt => opt.MapFrom(src => DateTime.UtcNow));
 

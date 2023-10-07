@@ -1,6 +1,6 @@
 ﻿namespace NZWalksCleanArch.DataService.Enums;
 
-public enum StatusEnum
+public enum Status
 {
     Deleted = 0,
     Draft = 1,

@@ -24,4 +24,12 @@
     <ProjectReference Include="..\NZWalksCleanArch.DataService\NZWalksCleanArch.DataService.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Users\Milan\Documents\Dev\Clean Architecture\NZWalksCleanArch.API\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\Users\Milan\Documents\Dev\Clean Architecture\NZWalksCleanArch.API\.editorconfig" />
+  </ItemGroup>
+
 </Project>

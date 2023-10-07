@@ -16,24 +16,21 @@ public sealed class RegionRepository : GenericRepository<Region>, IRegionReposit
 
     public override async Task<IEnumerable<Region>?> GetAllAsync(Filter filter)
     {
-        var regions = context.Regions.Where(o => o.Status != (int)StatusEnum.Deleted).AsQueryable();
+        var regions = context.Regions.Where(o => o.Status != (int)Status.Deleted).AsQueryable();
 
         //Filtering
-        if (!string.IsNullOrWhiteSpace(filter.FilterOn) && !string.IsNullOrWhiteSpace(filter.FilterQuery))
+        if (!string.IsNullOrWhiteSpace(filter.FilterOn) &&
+            !string.IsNullOrWhiteSpace(filter.FilterQuery) &&
+            filter.FilterOn.Equals("Name", StringComparison.OrdinalIgnoreCase))
         {
-            if (filter.FilterOn.Equals("Name", StringComparison.OrdinalIgnoreCase))
-            {
-                regions = regions.Where(x => x.Name.Contains(filter.FilterQuery));
-            }
+            regions = regions.Where(x => x.Name.Contains(filter.FilterQuery));
         }
 
         //Sorting
-        if (!string.IsNullOrWhiteSpace(filter.SortBy))
+        if (!string.IsNullOrWhiteSpace(filter.SortBy) &&
+            filter.SortBy.Equals("Name", StringComparison.OrdinalIgnoreCase))
         {
-            if (filter.SortBy.Equals("Name", StringComparison.OrdinalIgnoreCase))
-            {
-                regions = filter.IsAscending ? regions.OrderBy(x => x.Name) : regions.OrderByDescending(x => x.Name);
-            }
+            regions = filter.IsAscending ? regions.OrderBy(x => x.Name) : regions.OrderByDescending(x => x.Name);
         }
 
         //Pagination
@@ -47,16 +44,16 @@ public sealed class RegionRepository : GenericRepository<Region>, IRegionReposit
         return await context.Regions.FindAsync(id);
     }
 
-    public override async Task<bool> UpdateAsync(Guid id, Region region)
+    public override async Task<bool> UpdateAsync(Guid id, Region entity)
     {
         var existingRegion = await GetByIdAsync(id);
 
         if (existingRegion == null) 
             return false;
 
-        existingRegion.Code = region.Code;
-        existingRegion.Name = region.Name;
-        existingRegion.RegionImageUrl = region.RegionImageUrl;
+        existingRegion.Code = entity.Code;
+        existingRegion.Name = entity.Name;
+        existingRegion.RegionImageUrl = entity.RegionImageUrl;
 
         existingRegion.UpdatedDate = DateTime.UtcNow;
 
@@ -72,7 +69,7 @@ public sealed class RegionRepository : GenericRepository<Region>, IRegionReposit
 
         if (shadowDelete)
         {
-            existingRegion.Status = (int)StatusEnum.Deleted;
+            existingRegion.Status = (int)Status.Deleted;
             existingRegion.UpdatedDate = DateTime.UtcNow;
         }
         else

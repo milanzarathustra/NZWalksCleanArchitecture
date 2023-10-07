@@ -8,7 +8,7 @@ using NZWalksCleanArch.Entities.Models;
 
 namespace NZWalksCleanArch.DataService.Repositories;
 
-public class WalkRepository : GenericRepository<Walk>, IWalkRepository 
+public sealed class WalkRepository : GenericRepository<Walk>, IWalkRepository 
 {
     public WalkRepository(AppDbContext context, ILogger logger) : base(context, logger)
     {

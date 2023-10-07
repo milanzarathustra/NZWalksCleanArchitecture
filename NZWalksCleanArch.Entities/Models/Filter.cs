@@ -1,6 +1,6 @@
 ﻿namespace NZWalksCleanArch.Entities.Models;
 
-public class Filter
+public sealed class Filter
 {
     public string? FilterOn { get; set; } = null;
     public string? FilterQuery { get; set; } = null;

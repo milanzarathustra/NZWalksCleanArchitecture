@@ -6,7 +6,7 @@ using Serilog;
 
 namespace NZWalksCleanArch.API.Middlewares.GlobalExceptionHandling;
 
-public class ExceptionHandlerMiddleware
+public sealed class ExceptionHandlerMiddleware
 {
     private readonly ILogger<ExceptionHandlerMiddleware> logger;
     private readonly RequestDelegate next;

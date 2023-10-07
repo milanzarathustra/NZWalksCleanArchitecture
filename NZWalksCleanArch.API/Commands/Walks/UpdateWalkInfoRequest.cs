@@ -3,7 +3,7 @@ using NZWalksCleanArch.Entities.Dtos.Walks.Requests;
 
 namespace NZWalksCleanArch.API.Commands.Walks;
 
-public class UpdateWalkInfoRequest : IRequest<bool>
+public sealed class UpdateWalkInfoRequest : IRequest<bool>
 {
     public Guid Id { get; }
     public UpdateWalkRequest WalkRequest { get; }

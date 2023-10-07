@@ -8,7 +8,7 @@ using NZWalksCleanArch.Entities.Models;
 
 namespace NZWalksCleanArch.DataService.Repositories;
 
-public class RegionRepository : GenericRepository<Region>, IRegionRepository
+public sealed class RegionRepository : GenericRepository<Region>, IRegionRepository
 {
     public RegionRepository(AppDbContext context, ILogger logger) : base(context, logger)
     {

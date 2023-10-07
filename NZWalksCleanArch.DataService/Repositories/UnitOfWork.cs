@@ -4,7 +4,7 @@ using NZWalksCleanArch.DataService.Repositories.Interfaces;
 
 namespace NZWalksCleanArch.DataService.Repositories;
 
-public class UnitOfWork : IUnitOfWork, IDisposable
+public sealed class UnitOfWork : IUnitOfWork, IDisposable
 {
     private readonly AppDbContext context;
 

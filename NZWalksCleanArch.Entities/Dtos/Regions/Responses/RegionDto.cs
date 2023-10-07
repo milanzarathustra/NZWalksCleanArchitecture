@@ -1,6 +1,6 @@
 ﻿namespace NZWalksCleanArch.Entities.Dtos.Regions.Responses;
 
-public class RegionDto
+public sealed class RegionDto
 {
     public Guid Id { get; set; }
     public string Code { get; set; } = string.Empty;

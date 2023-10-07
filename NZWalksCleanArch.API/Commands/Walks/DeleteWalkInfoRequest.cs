@@ -2,7 +2,7 @@
 
 namespace NZWalksCleanArch.API.Commands.Walks;
 
-public class DeleteWalkInfoRequest : IRequest<bool>
+public sealed class DeleteWalkInfoRequest : IRequest<bool>
 {
     public Guid Id { get; }
 

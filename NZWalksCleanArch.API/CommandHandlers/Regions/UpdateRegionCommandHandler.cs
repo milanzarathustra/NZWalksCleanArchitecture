@@ -6,7 +6,7 @@ using NZWalksCleanArch.Entities.DbSet;
 
 namespace NZWalksCleanArch.API.CommandHandlers.Regions;
 
-public class UpdateRegionCommandHandler : IRequestHandler<UpdateRegionInfoRequest, bool>
+public sealed class UpdateRegionCommandHandler : IRequestHandler<UpdateRegionInfoRequest, bool>
 {
     private readonly IUnitOfWork unitOfWork;
     private readonly IMapper mapper;

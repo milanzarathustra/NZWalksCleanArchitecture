@@ -6,7 +6,7 @@ using NZWalksCleanArch.Entities.Dtos.Regions.Responses;
 
 namespace NZWalksCleanArch.API.QueryHandlers.Regions;
 
-public class GetAllRegionsQueryHandler : IRequestHandler<GetAllRegionsQuery, IEnumerable<RegionDto>>
+public sealed class GetAllRegionsQueryHandler : IRequestHandler<GetAllRegionsQuery, IEnumerable<RegionDto>>
 {
     private readonly IUnitOfWork unitOfWork;
     private readonly IMapper mapper;

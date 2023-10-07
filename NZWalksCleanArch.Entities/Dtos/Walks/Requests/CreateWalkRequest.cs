@@ -2,7 +2,7 @@
 
 namespace NZWalksCleanArch.Entities.Dtos.Walks.Requests;
 
-public class CreateWalkRequest
+public sealed class CreateWalkRequest
 {
     [Required]
     [MaxLength(100, ErrorMessage = "Name can only be a maximum of 100 characters")]

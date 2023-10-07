@@ -2,7 +2,7 @@
 
 namespace NZWalksCleanArch.Entities.Dtos.Regions.Requests;
 
-public class UpdateRegionRequest
+public sealed class UpdateRegionRequest
 {
     [Required]
     [MinLength(3, ErrorMessage = "Code has to be a minimum of 3 characters")]

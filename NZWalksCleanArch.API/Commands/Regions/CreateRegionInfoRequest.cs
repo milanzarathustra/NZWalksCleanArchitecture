@@ -4,7 +4,7 @@ using NZWalksCleanArch.Entities.Dtos.Regions.Responses;
 
 namespace NZWalksCleanArch.API.Commands.Regions;
 
-public class CreateRegionInfoRequest : IRequest<RegionDto>
+public sealed class CreateRegionInfoRequest : IRequest<RegionDto>
 {
     public CreateRegionRequest RegionRequest { get; }
 

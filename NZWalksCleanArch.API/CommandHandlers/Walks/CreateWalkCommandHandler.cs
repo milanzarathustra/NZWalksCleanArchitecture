@@ -7,7 +7,7 @@ using NZWalksCleanArch.Entities.Dtos.Walks.Responses;
 
 namespace NZWalksCleanArch.API.CommandHandlers.Walks;
 
-public class CreateWalkCommandHandler : IRequestHandler<CreateWalkInfoRequest, WalkDto>
+public sealed class CreateWalkCommandHandler : IRequestHandler<CreateWalkInfoRequest, WalkDto>
 {
     private readonly IUnitOfWork unitOfWork;
     private readonly IMapper mapper;

@@ -4,7 +4,7 @@ using NZWalksCleanArch.DataService.Repositories.Interfaces;
 
 namespace NZWalksCleanArch.API.CommandHandlers.Walks;
 
-public class DeleteWalkCommandHandler : IRequestHandler<DeleteWalkInfoRequest, bool>
+public sealed class DeleteWalkCommandHandler : IRequestHandler<DeleteWalkInfoRequest, bool>
 {
     private readonly IUnitOfWork unitOfWork;
 

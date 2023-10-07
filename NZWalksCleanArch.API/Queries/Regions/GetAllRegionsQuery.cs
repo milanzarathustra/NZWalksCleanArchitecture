@@ -4,7 +4,7 @@ using NZWalksCleanArch.Entities.Models;
 
 namespace NZWalksCleanArch.API.Queries.Regions;
 
-public class GetAllRegionsQuery : IRequest<IEnumerable<RegionDto>>
+public sealed class GetAllRegionsQuery : IRequest<IEnumerable<RegionDto>>
 {
     public Filter Filter { get; }
 

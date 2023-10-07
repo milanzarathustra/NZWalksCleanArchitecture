@@ -3,7 +3,7 @@ using NZWalksCleanArch.Entities.Dtos.Regions.Requests;
 
 namespace NZWalksCleanArch.API.Commands.Regions;
 
-public class UpdateRegionInfoRequest : IRequest<bool>
+public sealed class UpdateRegionInfoRequest : IRequest<bool>
 {
     public Guid Id { get; }
     public UpdateRegionRequest RegionRequest { get; }

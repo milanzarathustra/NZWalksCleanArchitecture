@@ -1,6 +1,6 @@
 ﻿namespace NZWalksCleanArch.Entities.Models;
 
-public class ErrorResult
+public sealed class ErrorResult
 {
     public List<string> Messages { get; set; } = new();
 

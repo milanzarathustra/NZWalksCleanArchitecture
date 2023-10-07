@@ -4,7 +4,7 @@ using NZWalksCleanArch.Entities.Dtos.Walks.Responses;
 
 namespace NZWalksCleanArch.API.Commands.Walks;
 
-public class CreateWalkInfoRequest : IRequest<WalkDto>
+public sealed class CreateWalkInfoRequest : IRequest<WalkDto>
 {
     public CreateWalkRequest WalkRequest { get; }
 

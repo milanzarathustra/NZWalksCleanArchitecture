@@ -4,7 +4,7 @@ using NZWalksCleanArch.Entities.Models;
 
 namespace NZWalksCleanArch.API.Queries.Walks;
 
-public class GetAllWalksQuery : IRequest<IEnumerable<WalkDto>>
+public sealed class GetAllWalksQuery : IRequest<IEnumerable<WalkDto>>
 {
     public Filter Filter { get; }
 

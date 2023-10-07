@@ -3,7 +3,7 @@ using NZWalksCleanArch.Entities.Dtos.Regions.Responses;
 
 namespace NZWalksCleanArch.Entities.Dtos.Walks.Responses;
 
-public class WalkDto
+public sealed class WalkDto
 {
     public Guid Id { get; set; }
     public string Name { get; set; } = string.Empty;

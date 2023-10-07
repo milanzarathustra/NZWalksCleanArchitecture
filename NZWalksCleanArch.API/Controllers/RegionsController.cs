@@ -10,7 +10,7 @@ using NZWalksCleanArch.Entities.Models;
 
 namespace NZWalksCleanArch.API.Controllers;
 
-public class RegionsController : BaseController
+public sealed class RegionsController : BaseController
 {
     public RegionsController(
         IUnitOfWork unitOfWork,

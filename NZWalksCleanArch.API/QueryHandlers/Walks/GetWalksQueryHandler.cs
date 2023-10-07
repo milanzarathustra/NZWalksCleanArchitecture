@@ -6,7 +6,7 @@ using NZWalksCleanArch.Entities.Dtos.Walks.Responses;
 
 namespace NZWalksCleanArch.API.QueryHandlers.Walks;
 
-public class GetWalkQueryHandler : IRequestHandler<GetWalkQuery, WalkDto>
+public sealed class GetWalkQueryHandler : IRequestHandler<GetWalkQuery, WalkDto>
 {
     private readonly IUnitOfWork unitOfWork;
     private readonly IMapper mapper;

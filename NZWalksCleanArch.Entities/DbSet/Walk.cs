@@ -1,6 +1,6 @@
 ﻿namespace NZWalksCleanArch.Entities.DbSet;
 
-public class Walk : BaseEntity
+public sealed class Walk : BaseEntity
 {
     public string Name { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;

@@ -9,7 +9,7 @@ using NZWalksCleanArch.Entities.Dtos.Walks.Responses;
 
 namespace NZWalksCleanArch.API.MappingProfiles;
 
-public class AutoMapperProfiles : Profile
+public sealed class AutoMapperProfiles : Profile
 {
     public AutoMapperProfiles()
     {

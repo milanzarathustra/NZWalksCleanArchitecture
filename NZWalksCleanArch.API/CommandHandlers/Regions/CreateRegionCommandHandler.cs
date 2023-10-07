@@ -5,30 +5,29 @@ using NZWalksCleanArch.DataService.Repositories.Interfaces;
 using NZWalksCleanArch.Entities.DbSet;
 using NZWalksCleanArch.Entities.Dtos.Regions.Responses;
 
-namespace NZWalksCleanArch.API.CommandHandlers.Regions
+namespace NZWalksCleanArch.API.CommandHandlers.Regions;
+
+public sealed class CreateRegionCommandHandler : IRequestHandler<CreateRegionInfoRequest, RegionDto>
 {
-    public class CreateRegionCommandHandler : IRequestHandler<CreateRegionInfoRequest, RegionDto>
+    private readonly IUnitOfWork unitOfWork;
+    private readonly IMapper mapper;
+
+    public CreateRegionCommandHandler(
+        IUnitOfWork unitOfWork,
+        IMapper mapper)
     {
-        private readonly IUnitOfWork unitOfWork;
-        private readonly IMapper mapper;
+        this.unitOfWork = unitOfWork;
+        this.mapper = mapper;
+    }
 
-        public CreateRegionCommandHandler(
-            IUnitOfWork unitOfWork,
-            IMapper mapper)
-        {
-            this.unitOfWork = unitOfWork;
-            this.mapper = mapper;
-        }
+    public async Task<RegionDto> Handle(CreateRegionInfoRequest request, CancellationToken cancellationToken)
+    {
+        var region = mapper.Map<Region>(request.RegionRequest);
 
-        public async Task<RegionDto> Handle(CreateRegionInfoRequest request, CancellationToken cancellationToken)
-        {
-            var region = mapper.Map<Region>(request.RegionRequest);
+        await unitOfWork.Region.CreateAsync(region);
 
-            await unitOfWork.Region.CreateAsync(region);
+        await unitOfWork.CompleteAsync();
 
-            await unitOfWork.CompleteAsync();
-
-            return mapper.Map<RegionDto>(region);
-        }
+        return mapper.Map<RegionDto>(region);
     }
 }

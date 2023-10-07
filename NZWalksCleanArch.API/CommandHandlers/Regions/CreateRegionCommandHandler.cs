@@ -5,7 +5,7 @@ using NZWalksCleanArch.DataService.Repositories.Interfaces;
 using NZWalksCleanArch.Entities.DbSet;
 using NZWalksCleanArch.Entities.Dtos.Regions.Responses;
 
-namespace NZRegions.API.CommandHandlers.Regions
+namespace NZWalksCleanArch.API.CommandHandlers.Regions
 {
     public class CreateRegionCommandHandler : IRequestHandler<CreateRegionInfoRequest, RegionDto>
     {
@@ -25,6 +25,7 @@ namespace NZRegions.API.CommandHandlers.Regions
             var region = mapper.Map<Region>(request.RegionRequest);
 
             await unitOfWork.Region.CreateAsync(region);
+
             await unitOfWork.CompleteAsync();
 
             return mapper.Map<RegionDto>(region);

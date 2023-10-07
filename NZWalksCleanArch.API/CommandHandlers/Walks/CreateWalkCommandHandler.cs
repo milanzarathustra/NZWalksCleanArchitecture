@@ -5,29 +5,28 @@ using NZWalksCleanArch.DataService.Repositories.Interfaces;
 using NZWalksCleanArch.Entities.DbSet;
 using NZWalksCleanArch.Entities.Dtos.Walks.Responses;
 
-namespace NZWalksCleanArch.API.CommandHandlers.Walks
+namespace NZWalksCleanArch.API.CommandHandlers.Walks;
+
+public class CreateWalkCommandHandler : IRequestHandler<CreateWalkInfoRequest, WalkDto>
 {
-    public class CreateWalkCommandHandler : IRequestHandler<CreateWalkInfoRequest, WalkDto>
+    private readonly IUnitOfWork unitOfWork;
+    private readonly IMapper mapper;
+
+    public CreateWalkCommandHandler(
+        IUnitOfWork unitOfWork,
+        IMapper mapper)
     {
-        private readonly IUnitOfWork unitOfWork;
-        private readonly IMapper mapper;
+        this.unitOfWork = unitOfWork;
+        this.mapper = mapper;
+    }
 
-        public CreateWalkCommandHandler(
-            IUnitOfWork unitOfWork,
-            IMapper mapper)
-        {
-            this.unitOfWork = unitOfWork;
-            this.mapper = mapper;
-        }
+    public async Task<WalkDto> Handle(CreateWalkInfoRequest request, CancellationToken cancellationToken)
+    {
+        var walk = mapper.Map<Walk>(request.WalkRequest);
 
-        public async Task<WalkDto> Handle(CreateWalkInfoRequest request, CancellationToken cancellationToken)
-        {
-            var walk = mapper.Map<Walk>(request.WalkRequest);
+        await unitOfWork.Walk.CreateAsync(walk);
+        await unitOfWork.CompleteAsync();
 
-            await unitOfWork.Walk.CreateAsync(walk);
-            await unitOfWork.CompleteAsync();
-
-            return mapper.Map<WalkDto>(walk);
-        }
+        return mapper.Map<WalkDto>(walk);
     }
 }

@@ -2,37 +2,36 @@
 using NZWalksCleanArch.DataService.Data;
 using NZWalksCleanArch.DataService.Repositories.Interfaces;
 
-namespace NZWalksCleanArch.DataService.Repositories
+namespace NZWalksCleanArch.DataService.Repositories;
+
+public class UnitOfWork : IUnitOfWork, IDisposable
 {
-    public class UnitOfWork : IUnitOfWork, IDisposable
+    private readonly AppDbContext context;
+
+    public IRegionRepository Region { get; }
+    public IWalkRepository Walk { get; }
+
+    public UnitOfWork(
+        AppDbContext context, 
+        ILoggerFactory loggerFactory)
     {
-        private readonly AppDbContext context;
+        this.context = context;
 
-        public IRegionRepository Region { get; }
-        public IWalkRepository Walk { get; }
+        var logger = loggerFactory.CreateLogger("logs");
 
-        public UnitOfWork(
-            AppDbContext context, 
-            ILoggerFactory loggerFactory)
-        {
-            this.context = context;
+        Region = new RegionRepository(context, logger);
+        Walk = new WalkRepository(context, logger);
+    }
 
-            var logger = loggerFactory.CreateLogger("logs");
+    public async Task<bool> CompleteAsync()
+    {
+        var result = await context.SaveChangesAsync();
 
-            Region = new RegionRepository(context, logger);
-            Walk = new WalkRepository(context, logger);
-        }
+        return result > 0;
+    }
 
-        public async Task<bool> CompleteAsync()
-        {
-            var result = await context.SaveChangesAsync();
-
-            return result > 0;
-        }
-
-        public void Dispose()
-        {
-            context.Dispose();
-        }
+    public void Dispose()
+    {
+        context.Dispose();
     }
 }

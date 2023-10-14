@@ -1,8 +1,8 @@
 ﻿using MediatR;
-using NZWalksCleanArch.API.Commands.Walks;
+using NZWalksCleanArch.API.Walks.Commands;
 using NZWalksCleanArch.DataService.Repositories.Interfaces;
 
-namespace NZWalksCleanArch.API.CommandHandlers.Regions;
+namespace NZWalksCleanArch.API.Regions.CommandHandlers;
 
 public sealed class DeleteRegionCommandHandler : IRequestHandler<DeleteWalkInfoRequest, bool>
 {

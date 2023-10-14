@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using NZWalksCleanArch.API.Commands.Regions;
-using NZWalksCleanArch.API.Queries.Regions;
+using NZWalksCleanArch.API.Regions.Commands;
+using NZWalksCleanArch.API.Regions.Queries;
 using NZWalksCleanArch.API.Middlewares.CustomActionFilters;
 using NZWalksCleanArch.DataService.Repositories.Interfaces;
 using NZWalksCleanArch.Entities.Dtos.Regions.Requests;

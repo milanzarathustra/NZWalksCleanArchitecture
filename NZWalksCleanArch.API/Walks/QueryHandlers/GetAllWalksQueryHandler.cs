@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using MediatR;
-using NZWalksCleanArch.API.Queries.Walks;
+using NZWalksCleanArch.API.Walks.Queries;
 using NZWalksCleanArch.DataService.Repositories.Interfaces;
 using NZWalksCleanArch.Entities.Dtos.Walks.Responses;
 
-namespace NZWalksCleanArch.API.QueryHandlers.Walks;
+namespace NZWalksCleanArch.API.Walks.QueryHandlers;
 
 public sealed class GetAllWalksQueryHandler : IRequestHandler<GetAllWalksQuery, IEnumerable<WalkDto>>
 {

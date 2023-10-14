@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using NZWalksCleanArch.Entities.Dtos.Regions.Requests;
 
-namespace NZWalksCleanArch.API.Commands.Regions;
+namespace NZWalksCleanArch.API.Regions.Commands;
 
 public sealed class UpdateRegionInfoRequest : IRequest<bool>
 {

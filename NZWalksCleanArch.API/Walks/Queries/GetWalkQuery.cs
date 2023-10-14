@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using NZWalksCleanArch.Entities.Dtos.Walks.Responses;
 
-namespace NZWalksCleanArch.API.Queries.Walks
+namespace NZWalksCleanArch.API.Walks.Queries
 {
     public sealed class GetWalkQuery : IRequest<WalkDto>
     {

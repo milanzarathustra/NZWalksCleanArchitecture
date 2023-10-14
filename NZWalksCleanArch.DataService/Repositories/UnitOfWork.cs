@@ -23,9 +23,9 @@ public sealed class UnitOfWork : IUnitOfWork, IDisposable
         Walk = new WalkRepository(context, logger);
     }
 
-    public async Task<bool> CompleteAsync()
+    public async Task<bool> CompleteAsync(CancellationToken cancellationToken)
     {
-        var result = await context.SaveChangesAsync();
+        var result = await context.SaveChangesAsync(cancellationToken);
 
         return result > 0;
     }

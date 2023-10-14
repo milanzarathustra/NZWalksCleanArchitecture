@@ -25,7 +25,7 @@ public sealed class CreateWalkCommandHandler : IRequestHandler<CreateWalkInfoReq
         var walk = mapper.Map<Walk>(request.WalkRequest);
 
         await unitOfWork.Walk.CreateAsync(walk);
-        await unitOfWork.CompleteAsync();
+        await unitOfWork.CompleteAsync(cancellationToken);
 
         return mapper.Map<WalkDto>(walk);
     }

@@ -5,5 +5,5 @@ public interface IUnitOfWork
     IRegionRepository Region { get; }
     IWalkRepository Walk { get; }
 
-    Task<bool> CompleteAsync();
+    Task<bool> CompleteAsync(CancellationToken cancellationToken);
 }

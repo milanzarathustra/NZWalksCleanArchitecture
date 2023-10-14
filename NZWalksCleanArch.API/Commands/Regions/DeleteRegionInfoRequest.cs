@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace NZWalksCleanArch.API.Regions.Commands;
+namespace NZWalksCleanArch.API.Commands.Regions;
 
 public sealed class DeleteRegionInfoRequest : IRequest<bool>
 {

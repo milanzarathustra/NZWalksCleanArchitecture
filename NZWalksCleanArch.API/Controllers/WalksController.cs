@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using NZWalksCleanArch.API.Walks.Commands;
+using NZWalksCleanArch.API.Commands.Walks;
 using NZWalksCleanArch.API.Middlewares.CustomActionFilters;
-using NZWalksCleanArch.API.Walks.Queries;
+using NZWalksCleanArch.API.Queries.Walks;
 using NZWalksCleanArch.DataService.Repositories.Interfaces;
 using NZWalksCleanArch.Entities.Dtos.Walks.Requests;
 using NZWalksCleanArch.Entities.Models;

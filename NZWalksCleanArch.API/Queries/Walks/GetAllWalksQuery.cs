@@ -2,7 +2,7 @@
 using NZWalksCleanArch.Entities.Dtos.Walks.Responses;
 using NZWalksCleanArch.Entities.Models;
 
-namespace NZWalksCleanArch.API.Walks.Queries;
+namespace NZWalksCleanArch.API.Queries.Walks;
 
 public sealed class GetAllWalksQuery : IRequest<IEnumerable<WalkDto>>
 {

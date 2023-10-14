@@ -2,7 +2,7 @@
 using NZWalksCleanArch.Entities.Dtos.Regions.Requests;
 using NZWalksCleanArch.Entities.Dtos.Regions.Responses;
 
-namespace NZWalksCleanArch.API.Regions.Commands;
+namespace NZWalksCleanArch.API.Commands.Regions;
 
 public sealed class CreateRegionInfoRequest : IRequest<RegionDto>
 {

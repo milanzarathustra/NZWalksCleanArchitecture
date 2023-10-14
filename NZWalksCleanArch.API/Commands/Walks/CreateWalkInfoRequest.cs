@@ -2,7 +2,7 @@
 using NZWalksCleanArch.Entities.Dtos.Walks.Requests;
 using NZWalksCleanArch.Entities.Dtos.Walks.Responses;
 
-namespace NZWalksCleanArch.API.Walks.Commands;
+namespace NZWalksCleanArch.API.Commands.Walks;
 
 public sealed class CreateWalkInfoRequest : IRequest<WalkDto>
 {

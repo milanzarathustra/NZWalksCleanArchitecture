@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using NZWalksCleanArch.Entities.Dtos.Walks.Requests;
 
-namespace NZWalksCleanArch.API.Walks.Commands;
+namespace NZWalksCleanArch.API.Commands.Walks;
 
 public sealed class UpdateWalkInfoRequest : IRequest<bool>
 {

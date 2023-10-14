@@ -2,7 +2,7 @@
 using NZWalksCleanArch.Entities.Dtos.Regions.Responses;
 using NZWalksCleanArch.Entities.Models;
 
-namespace NZWalksCleanArch.API.Regions.Queries;
+namespace NZWalksCleanArch.API.Queries.Regions;
 
 public sealed class GetAllRegionsQuery : IRequest<IEnumerable<RegionDto>>
 {

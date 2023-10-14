@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace NZWalksCleanArch.API.Walks.Commands;
+namespace NZWalksCleanArch.API.Commands.Walks;
 
 public sealed class DeleteWalkInfoRequest : IRequest<bool>
 {

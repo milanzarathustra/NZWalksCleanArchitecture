@@ -4,11 +4,11 @@ using NZWalksCleanArch.DataService.Repositories.Interfaces;
 
 namespace NZWalksCleanArch.API.Regions.CommandHandlers;
 
-public sealed class DeleteRegionCommandHandler : IRequestHandler<DeleteWalkInfoRequest, bool>
+public sealed class DeleteRegionCommand : IRequestHandler<DeleteWalkInfoRequest, bool>
 {
     private readonly IUnitOfWork unitOfWork;
 
-    public DeleteRegionCommandHandler(
+    public DeleteRegionCommand(
         IUnitOfWork unitOfWork)
     {
         this.unitOfWork = unitOfWork;
@@ -16,7 +16,7 @@ public sealed class DeleteRegionCommandHandler : IRequestHandler<DeleteWalkInfoR
 
     public async Task<bool> Handle(DeleteWalkInfoRequest request, CancellationToken cancellationToken)
     {
-        var isDeleted = await unitOfWork.Region.DeleteAsync(request.Id);
+        var isDeleted = await unitOfWork.Region.DeleteAsync(request.Id, false);
 
         if (!isDeleted)
             return false;

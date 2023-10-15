@@ -7,12 +7,12 @@ using NZWalksCleanArch.Entities.Dtos.Regions.Responses;
 
 namespace NZWalksCleanArch.API.Regions.CommandHandlers;
 
-public sealed class CreateRegionCommandHandler : IRequestHandler<CreateRegionInfoRequest, RegionDto>
+public sealed class CreateRegionCommand : IRequestHandler<CreateRegionInfoRequest, RegionDto>
 {
     private readonly IUnitOfWork unitOfWork;
     private readonly IMapper mapper;
 
-    public CreateRegionCommandHandler(
+    public CreateRegionCommand(
         IUnitOfWork unitOfWork,
         IMapper mapper)
     {

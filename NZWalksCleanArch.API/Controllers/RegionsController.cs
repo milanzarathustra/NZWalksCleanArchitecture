@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using NZWalksCleanArch.API.Commands.Regions;
-using NZWalksCleanArch.API.Queries.Regions;
 using NZWalksCleanArch.API.Middlewares.CustomActionFilters;
 using NZWalksCleanArch.DataService.Repositories.Interfaces;
 using NZWalksCleanArch.Entities.Dtos.Regions.Requests;
 using NZWalksCleanArch.Entities.Models;
+using NZWalksCleanArch.API.Regions.Queries;
+using NZWalksCleanArch.API.Regions.Commands;
 
 namespace NZWalksCleanArch.API.Controllers;
 

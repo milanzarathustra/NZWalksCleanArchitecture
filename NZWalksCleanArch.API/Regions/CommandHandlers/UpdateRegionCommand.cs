@@ -6,12 +6,12 @@ using NZWalksCleanArch.Entities.DbSet;
 
 namespace NZWalksCleanArch.API.Regions.CommandHandlers;
 
-public sealed class UpdateRegionCommandHandler : IRequestHandler<UpdateRegionInfoRequest, bool>
+public sealed class UpdateRegionCommand : IRequestHandler<UpdateRegionInfoRequest, bool>
 {
     private readonly IUnitOfWork unitOfWork;
     private readonly IMapper mapper;
 
-    public UpdateRegionCommandHandler(
+    public UpdateRegionCommand(
         IUnitOfWork unitOfWork,
         IMapper mapper)
     {

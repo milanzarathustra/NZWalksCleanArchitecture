@@ -21,8 +21,6 @@ public sealed class DeleteWalkCommand : IRequestHandler<DeleteWalkInfoRequest, b
         if (!isDeleted)
             return false;
 
-        await unitOfWork.CompleteAsync(cancellationToken);
-
         return true;
     }
 }

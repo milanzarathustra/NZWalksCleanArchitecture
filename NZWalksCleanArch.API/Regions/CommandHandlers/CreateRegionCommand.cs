@@ -26,8 +26,6 @@ public sealed class CreateRegionCommand : IRequestHandler<CreateRegionInfoReques
 
         await unitOfWork.Region.CreateAsync(region);
 
-        await unitOfWork.CompleteAsync(cancellationToken);
-
         return mapper.Map<RegionDto>(region);
     }
 }

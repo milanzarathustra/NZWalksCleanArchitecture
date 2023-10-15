@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using NZWalksCleanArch.API.Behaviors;
 using NZWalksCleanArch.API.Middlewares.GlobalExceptionHandling;
 using NZWalksCleanArch.DataService.Data;
 using NZWalksCleanArch.DataService.Repositories;
@@ -15,7 +16,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(Program).Assembly));
+builder.Services.AddMediatR(cfg => {
+    cfg.RegisterServicesFromAssemblies(typeof(Program).Assembly);
+    cfg.AddOpenBehavior(typeof(UnitOfWorkBehavior<,>));
+});
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 

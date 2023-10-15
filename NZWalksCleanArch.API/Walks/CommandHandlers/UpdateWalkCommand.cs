@@ -24,7 +24,6 @@ public sealed class UpdateWalkCommand : IRequestHandler<UpdateWalkInfoRequest, b
         var walk = mapper.Map<Walk>(request.WalkRequest);
 
         await unitOfWork.Walk.UpdateAsync(request.Id, walk);
-        await unitOfWork.CompleteAsync(cancellationToken);
 
         return true;
     }

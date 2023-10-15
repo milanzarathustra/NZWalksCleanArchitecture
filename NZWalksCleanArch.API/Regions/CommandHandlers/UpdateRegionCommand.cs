@@ -24,7 +24,6 @@ public sealed class UpdateRegionCommand : IRequestHandler<UpdateRegionInfoReques
         var region = mapper.Map<Region>(request.RegionRequest);
 
         await unitOfWork.Region.UpdateAsync(request.Id, region);
-        await unitOfWork.CompleteAsync(cancellationToken);
 
         return true;
     }

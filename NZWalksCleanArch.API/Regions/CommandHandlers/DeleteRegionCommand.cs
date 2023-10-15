@@ -21,8 +21,6 @@ public sealed class DeleteRegionCommand : IRequestHandler<DeleteWalkInfoRequest,
         if (!isDeleted)
             return false;
 
-        await unitOfWork.CompleteAsync(cancellationToken);
-
         return true;
     }
 }

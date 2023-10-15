@@ -2,44 +2,43 @@
 using NZWalksCleanArch.DataService.Repositories.Interfaces;
 using System.Transactions;
 
-namespace NZWalksCleanArch.API.Behaviors
+namespace NZWalksCleanArch.API.Behaviors;
+
+public sealed class UnitOfWorkBehavior<TRequest, TResponse>
+    : IPipelineBehavior<TRequest, TResponse>
+    where TRequest : notnull
 {
-    public sealed class UnitOfWorkBehavior<TRequest, TResponse>
-        : IPipelineBehavior<TRequest, TResponse>
-        where TRequest : notnull
+    private readonly IUnitOfWork unitOfWork;
+
+    public UnitOfWorkBehavior(IUnitOfWork unitOfWork)
     {
-        private readonly IUnitOfWork unitOfWork;
+        this.unitOfWork = unitOfWork;
+    }
 
-        public UnitOfWorkBehavior(IUnitOfWork unitOfWork)
+    public async Task<TResponse> Handle(
+        TRequest request, 
+        RequestHandlerDelegate<TResponse> next, 
+        CancellationToken cancellationToken)
+    {
+        if (IsNotCommand())
         {
-            this.unitOfWork = unitOfWork;
+            return await next();
         }
 
-        public async Task<TResponse> Handle(
-            TRequest request, 
-            RequestHandlerDelegate<TResponse> next, 
-            CancellationToken cancellationToken)
+        using (var transactionScope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
         {
-            if (IsNotCommand())
-            {
-                return await next();
-            }
+            var response = await next();
 
-            using (var transactionScope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
-            {
-                var response = await next();
+            await unitOfWork.CompleteAsync(cancellationToken);
 
-                await unitOfWork.CompleteAsync(cancellationToken);
+            transactionScope.Complete();
 
-                transactionScope.Complete();
+            return response;
+        }          
+    }
 
-                return response;
-            }          
-        }
-
-        private static bool IsNotCommand()
-        {
-            return !typeof(TRequest).Name.EndsWith("Request");
-        }
+    private static bool IsNotCommand()
+    {
+        return !typeof(TRequest).Name.EndsWith("Request");
     }
 }

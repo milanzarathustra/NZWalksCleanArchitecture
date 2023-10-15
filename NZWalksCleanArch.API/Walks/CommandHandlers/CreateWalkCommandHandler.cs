@@ -1,17 +1,18 @@
 ﻿using AutoMapper;
 using MediatR;
-using NZWalksCleanArch.API.Commands.Walks;
+using NZWalksCleanArch.API.Walks.Commands;
 using NZWalksCleanArch.DataService.Repositories.Interfaces;
 using NZWalksCleanArch.Entities.DbSet;
+using NZWalksCleanArch.Entities.Dtos.Walks.Responses;
 
-namespace NZWalksCleanArch.API.CommandHandlers.Walks;
+namespace NZWalksCleanArch.API.Walks.CommandHandlers;
 
-public sealed class UpdateWalkCommandHandler : IRequestHandler<UpdateWalkInfoRequest, bool>
+public sealed class CreateWalkCommandHandler : IRequestHandler<CreateWalkInfoRequest, WalkDto>
 {
     private readonly IUnitOfWork unitOfWork;
     private readonly IMapper mapper;
 
-    public UpdateWalkCommandHandler(
+    public CreateWalkCommandHandler(
         IUnitOfWork unitOfWork,
         IMapper mapper)
     {
@@ -19,13 +20,13 @@ public sealed class UpdateWalkCommandHandler : IRequestHandler<UpdateWalkInfoReq
         this.mapper = mapper;
     }
 
-    public async Task<bool> Handle(UpdateWalkInfoRequest request, CancellationToken cancellationToken)
+    public async Task<WalkDto> Handle(CreateWalkInfoRequest request, CancellationToken cancellationToken)
     {
         var walk = mapper.Map<Walk>(request.WalkRequest);
 
-        await unitOfWork.Walk.UpdateAsync(request.Id, walk);
+        await unitOfWork.Walk.CreateAsync(walk);
         await unitOfWork.CompleteAsync(cancellationToken);
 
-        return true;
+        return mapper.Map<WalkDto>(walk);
     }
 }

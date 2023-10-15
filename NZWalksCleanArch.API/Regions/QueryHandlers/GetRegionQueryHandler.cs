@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using MediatR;
-using NZWalksCleanArch.API.Queries.Regions;
+using NZWalksCleanArch.API.Regions.Queries;
 using NZWalksCleanArch.DataService.Repositories.Interfaces;
 using NZWalksCleanArch.Entities.Dtos.Regions.Responses;
 
-namespace NZWalksCleanArch.API.QueryHandlers.Regions;
+namespace NZWalksCleanArch.API.Regions.QueryHandlers;
 
 public sealed class GetRegionQueryHandler : IRequestHandler<GetRegionQuery, RegionDto>
 {

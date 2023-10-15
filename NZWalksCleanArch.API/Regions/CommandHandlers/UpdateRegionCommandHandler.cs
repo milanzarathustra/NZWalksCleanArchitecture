@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using MediatR;
-using NZWalksCleanArch.API.Commands.Regions;
+using NZWalksCleanArch.API.Regions.Commands;
 using NZWalksCleanArch.DataService.Repositories.Interfaces;
 using NZWalksCleanArch.Entities.DbSet;
 
-namespace NZWalksCleanArch.API.CommandHandlers.Regions;
+namespace NZWalksCleanArch.API.Regions.CommandHandlers;
 
 public sealed class UpdateRegionCommandHandler : IRequestHandler<UpdateRegionInfoRequest, bool>
 {
